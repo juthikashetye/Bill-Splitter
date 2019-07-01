@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tip Calculator</title>
+</head>
+<body>
+	<h1>Tip Calculator</h1>
+
+	<form>
+		<label for="billAmount">Bill Amount</label>
+		<input type="text" name="billAmt" id="billAmount">
+
+		<label for="tipPercent">Tip</label>
+		<input type="text" name="tipPercentage" id="tipPercent">
+
+		<label for="splitBox">Split Bill</label>
+		<input type="checkbox" name="splitCheckbox" id="splitBox">
+
+		<label for="people">Between</label>
+		<input type="text" name="NumPeople" id="people">
+		
+		<input type="submit" name="submitButton" value="Calculate">
+	</form>
+
+	<section id="totalSection">
+		<h2>Total</h2>
+		<p>Total Tip Amount <span id="totalTip"></span></p>
+		<p>Total Price <span id="totalPrice"></span></p>
+	</section>
+
+	<section id="perPersonSection">
+		<h2>Per Person</h2>
+		<p>Tip Amount <span id="splitTip"></span></p>
+		<p>Price <span id="splitPrice"></span></p>
+	</section>
+</body>
+</html>
