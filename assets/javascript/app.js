@@ -11,7 +11,9 @@ var perPersonSection = $("#perPersonSection");
 
 function splitLogic(){
 	
-
+	// $("#billAmount").focusout(function() {
+ //    		alert("Please enter a valid non-negative number.")
+ // 	})
 
 	$("#calculate").on("click", function(event){
 
@@ -36,8 +38,8 @@ function splitLogic(){
 		// (isFinite(parseFloat(tipPercent)))
 		// (isFinite(parseFloat(billAmount)))
 
-
-		if ((billAmount === "") || (isFinite(billAmount) === false)) {
+		
+		if ((billAmount === "") || ((isFinite(billAmount) === false) || (Math.sign(billAmount) === -1) || (Math.sign(billAmount) === -0) || (Math.sign(billAmount) === NaN))) {
 
 			$("#totalTip").text(0);
 			$("#totalPrice").text(0);
@@ -57,7 +59,7 @@ function splitLogic(){
 
 		}else{
 
-			if ((tipPercent === "") || (isFinite(tipPercent) === false)) {
+			if ((tipPercent === "") || (isFinite(tipPercent) === false) || (Math.sign(tipPercent) === -1) || (Math.sign(tipPercent) === -0) || (Math.sign(tipPercent) === NaN)) {
 
 				console.log(billAmount);
 				console.log(tipPercent);
@@ -71,13 +73,13 @@ function splitLogic(){
 				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
 				$("#totalTip").text(0);
-				$("#totalPrice").text(parseFloat(billAmount));
+				$("#totalPrice").text(Math.abs(parseFloat(billAmount)));
 				$("#splitTip").text(0);
 				$("#splitPrice").text(0);
 
 			}else{
-				var calculatedTip = parseFloat(tipPercent) / 100 * parseFloat(billAmount);
-				var calculatedPrice = parseFloat(calculatedTip) + parseFloat(billAmount);
+				var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
+				var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
 
 				console.log(billAmount);
 				console.log(tipPercent);
@@ -92,8 +94,8 @@ function splitLogic(){
 				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
 				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
-				$("#totalTip").text(calculatedTip);
-				$("#totalPrice").text(calculatedPrice);
+				$("#totalTip").text(Math.abs(calculatedTip));
+				$("#totalPrice").text(Math.abs(calculatedPrice));
 			}
 		}
 
