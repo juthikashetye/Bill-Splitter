@@ -1,0 +1,147 @@
+// Global Variables
+var billAmount = $("#billAmount").val();
+var tipPercent = $("#tipPercent").val();
+var people = $("#people").val();
+var totalTip = $("#totalTip").text();
+var totalPrice = $("#totalPrice").text();
+var splitTip = $("#splitTip").text();
+var splitPrice = $("#splitPrice").text();
+var totalSection = $("#totalSection");
+var perPersonSection = $("#perPersonSection");
+
+function splitLogic(){
+	
+
+
+	$("#calculate").on("click", function(event){
+
+		billAmount = $("#billAmount").val();
+		tipPercent = $("#tipPercent").val();
+		people = $("#people").val();
+		totalTip = $("#totalTip").text();
+		totalPrice = $("#totalPrice").text();
+		splitTip = $("#splitTip").text();
+		splitPrice = $("#splitPrice").text();
+		totalSection = $("#totalSection");
+		perPersonSection = $("#perPersonSection");
+		event.preventDefault();
+		// alert("You clicked calculate!");
+
+		// || (!billAmount.match(/^\d+$/))
+		// || (!billAmount.match(/^\d+\.?\d*$/))
+		// || (!tipPercent.match(/^\d+$/))
+		// || (!tipPercent.match(/^\d+\.?\d*$/)) 
+		// || (!Number.isFinite(parseFloat(billAmount))) 
+		// || (!Number.isFinite(parseFloat(tipPercent))) 
+		// (isFinite(parseFloat(tipPercent)))
+		// (isFinite(parseFloat(billAmount)))
+
+
+		if ((billAmount === "") || (isFinite(billAmount) === false)) {
+
+			$("#totalTip").text(0);
+			$("#totalPrice").text(0);
+			$("#splitTip").text(0);
+			$("#splitPrice").text(0);
+
+			console.log(billAmount);
+			console.log(tipPercent);
+			console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
+			console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
+			console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
+			console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
+			console.log("Bill is finite " + (isFinite((billAmount))));
+			console.log("Tip is finite " + (isFinite((tipPercent))));
+			console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
+			console.log("Tip is finite " + Number.isFinite((tipPercent)));
+
+		}else{
+
+			if ((tipPercent === "") || (isFinite(tipPercent) === false)) {
+
+				console.log(billAmount);
+				console.log(tipPercent);
+				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
+				console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
+				console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
+				console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
+				console.log("Bill is finite " + (isFinite((billAmount))));
+				console.log("Tip is finite " + (isFinite((tipPercent))));
+				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
+				console.log("Tip is finite " + Number.isFinite((tipPercent)));
+
+				$("#totalTip").text(0);
+				$("#totalPrice").text(parseFloat(billAmount));
+				$("#splitTip").text(0);
+				$("#splitPrice").text(0);
+
+			}else{
+				var calculatedTip = parseFloat(tipPercent) / 100 * parseFloat(billAmount);
+				var calculatedPrice = parseFloat(calculatedTip) + parseFloat(billAmount);
+
+				console.log(billAmount);
+				console.log(tipPercent);
+				console.log(calculatedTip);
+				console.log(calculatedPrice);
+				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
+				console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
+				console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
+				console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
+				console.log("Bill is finite " + (isFinite((billAmount))));
+				console.log("Tip is finite " + (isFinite((tipPercent))));
+				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
+				console.log("Tip is finite " + Number.isFinite((tipPercent)));
+
+				$("#totalTip").text(calculatedTip);
+				$("#totalPrice").text(calculatedPrice);
+			}
+		}
+
+		// else if((billAmount !== "") || (parseInt(billAmount) !== 0) || (billAmount !== NaN)){
+			
+		// 	if ((tipPercent === "") || (parseInt(tipPercent === 0)) || (tipPercent === NaN)) {
+
+		// 		console.log(billAmount);
+		// 		console.log(tipPercent);
+
+		// 		$("#totalPrice").text(billAmount);
+
+		// 	}else{
+		// 		var calculatedTip = parseInt(tipPercent) / 100 * parseInt(billAmount);
+		// 		var calculatedPrice = parseInt(calculatedTip) + parseInt(billAmount);
+
+		// 		console.log(billAmount);
+		// 		console.log(tipPercent);
+		// 		console.log(calculatedTip);
+		// 		console.log(calculatedPrice);
+
+		// 		$("#totalTip").text(calculatedTip);
+		// 		$("#totalPrice").text(calculatedPrice);
+		// 	}
+			
+		// }
+
+		// if ((tipPercent === "") || (parseInt(tipPercent === 0)) || (tipPercent === NaN)) {
+		// 	var calculatedTip = parseInt(tipPercent) / 100 * parseInt(billAmount);
+		// 	var calculatedPrice = parseInt(calculatedTip) + parseInt(billAmount);
+
+		// 	console.log(calculatedTip);
+		// 	console.log(calculatedPrice);
+
+		// 	$("#totalTip").text(calculatedTip);
+		// 	$("#totalPrice").text(calculatedPrice);
+		// }
+
+	})
+
+
+}
+
+splitLogic();
+
+function init(){
+	totalSection.hide();
+	perPersonSection.hide();
+}
+
+// init();
