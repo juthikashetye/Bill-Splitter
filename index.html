@@ -11,35 +11,88 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 <body>
-	<h1>Tip Calculator</h1>
+	<div class="container">
+		<h1>Tip Calculator</h1>
 
-	<form>
-		<label for="billAmount">Bill Amount</label>
-		<input type="text" name="billAmt" id="billAmount">
+		<form>
 
-		<label for="tipPercent">Tip</label>
-		<input type="text" name="tipPercentage" id="tipPercent">
+			<div class="form-group">
+				<div class="input-group mb-3 row justify-content-md-center no-gutters">
+					
+					<label for="billAmount" class="col-sm-4 col-md-2 col-form-label">Bill Amount</label>
 
-		<label for="splitBox">Split Bill</label>
-		<input type="checkbox" name="splitCheckbox" id="splitBox">
+					<div class="input-group-prepend">
+						<span class="input-group-text">$</span>
+					</div>
 
-		<label for="people">Between</label>
-		<input type="text" name="NumPeople" id="people">
+					<input type="text" name="billAmt" id="billAmount" data-placement="top" title="Positive numbers only. Decimals allowed." class="col form-control" min="0" step="0.01">
+					
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="input-group mb-3 row justify-content-md-center no-gutters">
+					
+					<label for="tipPercent" class="col-sm-4 col-md-2 col-form-label">Tip</label>
+
+					<input type="text" name="tipPercentage" id="tipPercent" data-placement="top" title="Positive numbers only. Decimals allowed." class="col form-control" min="0" step="0.01">
+
+					<div class="input-group-append">
+						<span class="input-group-text">%</span>
+					</div>
+					
+				</div>
+			</div>
 		
-		<button type="button" id="calculate">Calculate</button>
-	</form>
+  			<div class="form-group">
+			   <div class="row justify-content-md-center no-gutters">
+				    <div class="col-sm-3">
+				      <div class="form-check pt-2">
+				        <input class="form-check-input" type="checkbox" name="splitCheckbox" id="splitBox">
+						<label class="form-check-label ml-1" for="splitBox">Split Bill</label>
+				      </div>
+				   </div>
 
-	<section id="totalSection">
-		<h2>Total</h2>
-		<p>Total Tip Amount <span id="totalTip"></span></p>
-		<p>Total Price <span id="totalPrice"></span></p>
-	</section>
+				   	<div class="col input-group mb-3">
+						<label for="people" class="col-sm-4 col-md-2 col-form-label pl-0 mr-2">Between</label>
+						<input type="text" name="NumPeople" id="people" class="form-control ">
+					</div>
+			   </div>
+			</div>
 
-	<section id="perPersonSection">
-		<h2>Per Person</h2>
-		<p>Tip Amount <span id="splitTip"></span></p>
-		<p>Price <span id="splitPrice"></span></p>
-	</section>
+
+
+			
+			<!-- <input type="checkbox" name="splitCheckbox" id="splitBox">
+			<label for="splitBox" class="col-lg-3 control-label text-lg-right">Split Bill</label>
+
+			<div class="input-group mb-3">
+				<label for="people" class="col-xs-4 control-label">Between</label>
+				<input type="text" name="NumPeople" id="people" class="form-control col-xs-8">
+			</div> -->
+
+
+
+			<!-- </div> -->
+
+			<button type="submit" id="calculate">Calculate</button>
+			
+		</form>
+
+		<!-- <section id="totalSection">
+			<h2>Total</h2>
+			<p>Total Tip Amount <span id="totalTip"></span></p>
+			<p>Total Price <span id="totalPrice"></span></p>
+		</section>
+
+		<section id="perPersonSection">
+			<h2>Per Person</h2>
+			<p>Tip Amount <span id="splitTip"></span></p>
+			<p>Price <span id="splitPrice"></span></p>
+		</section> -->
+
+	</div>
+
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -56,6 +109,10 @@
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
     <!-- onload JS code goes here -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+    	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		})	
+    </script>
 </body>
 </html>
