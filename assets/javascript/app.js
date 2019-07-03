@@ -80,22 +80,28 @@ function splitLogic(){
 			}else{
 				var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
 				var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
+				var calculatedSplitTip = calculatedTip/people;
+				var calculatedSplitPrice = calculatedPrice/people;
 
-				console.log(billAmount);
-				console.log(tipPercent);
-				console.log(calculatedTip);
-				console.log(calculatedPrice);
-				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
-				console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
-				console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
-				console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
-				console.log("Bill is finite " + (isFinite((billAmount))));
-				console.log("Tip is finite " + (isFinite((tipPercent))));
-				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
-				console.log("Tip is finite " + Number.isFinite((tipPercent)));
+				// console.log(billAmount);
+				// console.log(tipPercent);
+				// console.log(calculatedTip);
+				// console.log(calculatedPrice);
+				// console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
+				// console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
+				// console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
+				// console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
+				// console.log("Bill is finite " + (isFinite((billAmount))));
+				// console.log("Tip is finite " + (isFinite((tipPercent))));
+				// console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
+				// console.log("Tip is finite " + Number.isFinite((tipPercent)));
+
+
 
 				$("#totalTip").text(Math.abs(calculatedTip));
 				$("#totalPrice").text(Math.abs(calculatedPrice));
+				$("#splitTip").text(calculatedSplitTip);
+				$("#splitPrice").text(calculatedSplitPrice);
 			}
 		}
 

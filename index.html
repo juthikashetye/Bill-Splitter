@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Tip Calculator</h1>
+		<h1 class="text-center">Tip Calculator</h1>
 
 		<form>
 
@@ -25,7 +25,7 @@
 						<span class="input-group-text">$</span>
 					</div>
 
-					<input type="text" name="billAmt" id="billAmount" data-placement="top" title="Positive numbers only. Decimals allowed." class="col form-control" min="0" step="0.01">
+					<input type="number" name="billAmt" id="billAmount" data-placement="top" title="Positive numbers only. Decimals allowed." class="col form-control" min="0" step="0.01">
 					
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 					
 					<label for="tipPercent" class="col-sm-4 col-md-2 col-form-label">Tip</label>
 
-					<input type="text" name="tipPercentage" id="tipPercent" data-placement="top" title="Positive numbers only. Decimals allowed." class="col form-control" min="0" step="0.01">
+					<input type="number" name="tipPercentage" id="tipPercent" data-placement="top" title="Positive numbers only. Decimals allowed." class="col form-control" min="0" step="0.01">
 
 					<div class="input-group-append">
 						<span class="input-group-text">%</span>
@@ -55,14 +55,12 @@
 
 				   	<div class="col input-group mb-3">
 						<label for="people" class="col-sm-4 col-md-2 col-form-label pl-0 mr-2">Between</label>
-						<input type="text" name="NumPeople" id="people" class="form-control ">
+						<input type="number" name="NumPeople" id="people" class="form-control" min="0" step="1">
 					</div>
 			   </div>
 			</div>
 
 
-
-			
 			<!-- <input type="checkbox" name="splitCheckbox" id="splitBox">
 			<label for="splitBox" class="col-lg-3 control-label text-lg-right">Split Bill</label>
 
@@ -74,22 +72,24 @@
 
 
 			<!-- </div> -->
-
-			<button type="submit" id="calculate">Calculate</button>
+			<div class="text-center">
+				<button type="submit" id="calculate" class="text-center">Calculate</button>
+			</div>
+			
 			
 		</form>
 
-		<!-- <section id="totalSection">
-			<h2>Total</h2>
-			<p>Total Tip Amount <span id="totalTip"></span></p>
-			<p>Total Price <span id="totalPrice"></span></p>
+		<section id="totalSection">
+			<h2>Total Bill</h2>
+			<p>Tip Amount <span id="totalTip"></span></p>
+			<p>Total To Be Paid <span id="totalPrice"></span></p>
 		</section>
 
 		<section id="perPersonSection">
 			<h2>Per Person</h2>
 			<p>Tip Amount <span id="splitTip"></span></p>
-			<p>Price <span id="splitPrice"></span></p>
-		</section> -->
+			<p>Total To Be Paid <span id="splitPrice"></span></p>
+		</section>
 
 	</div>
 
