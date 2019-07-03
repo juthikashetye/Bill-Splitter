@@ -61,6 +61,8 @@ function splitLogic(){
 
 			if ((tipPercent === "") || (isFinite(tipPercent) === false) || (Math.sign(tipPercent) === -1) || (Math.sign(tipPercent) === -0) || (Math.sign(tipPercent) === NaN)) {
 
+				var onlyBillSplit = Math.abs(parseFloat(billAmount))/Math.abs(parseFloat(people));
+
 				console.log(billAmount);
 				console.log(tipPercent);
 				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
@@ -72,16 +74,24 @@ function splitLogic(){
 				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
 				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
+				if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
+					$("#splitTip").text(0);
+					$("#splitPrice").text(0);
+				}else{
+					$("#splitTip").text(0);
+					$("#splitPrice").text(onlyBillSplit);
+				}
+
 				$("#totalTip").text(0);
 				$("#totalPrice").text(Math.abs(parseFloat(billAmount)));
-				$("#splitTip").text(0);
-				$("#splitPrice").text(0);
+				// $("#splitTip").text(0);
+				// $("#splitPrice").text(onlyBillSplit);
 
 			}else{
 				var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
 				var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
-				var calculatedSplitTip = calculatedTip/people;
-				var calculatedSplitPrice = calculatedPrice/people;
+				var calculatedSplitTip = calculatedTip/Math.abs(parseFloat(people));
+				var calculatedSplitPrice = calculatedPrice/Math.abs(parseFloat(people));
 
 				// console.log(billAmount);
 				// console.log(tipPercent);
@@ -96,12 +106,18 @@ function splitLogic(){
 				// console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
 				// console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
+				if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
+					$("#splitTip").text(0);
+					$("#splitPrice").text(0);
+				}else{
+					$("#splitTip").text(calculatedSplitTip);
+					$("#splitPrice").text(calculatedSplitPrice);
+				}
 
 
 				$("#totalTip").text(Math.abs(calculatedTip));
 				$("#totalPrice").text(Math.abs(calculatedPrice));
-				$("#splitTip").text(calculatedSplitTip);
-				$("#splitPrice").text(calculatedSplitPrice);
+				
 			}
 		}
 
