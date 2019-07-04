@@ -9,11 +9,28 @@ var splitPrice = $("#splitPrice").text();
 var totalSection = $("#totalSection");
 var perPersonSection = $("#perPersonSection");
 
-function splitLogic(){
+$(document).ready(function(){
+
+  $("#splitBox").on("click", function(){
+
+
+  	if (($(this).is(':checked') === true)){
+
+    	$('#betweenDiv').css("display","inherit");
+    	$('#betweenHelpText').css("display","inherit");
+    	
+  	}else {
+
+  		$('#betweenDiv').css("display","none");
+  		$('#betweenHelpText').css("display","none");
+  	}
+
+  })
 	
-	// $("#billAmount").focusout(function() {
- //    		alert("Please enter a valid non-negative number.")
- // 	})
+	
+ });
+
+function splitLogic(){
 
 	$("#calculate").on("click", function(event){
 
@@ -78,12 +95,13 @@ function splitLogic(){
 					$("#splitTip").text(0);
 					$("#splitPrice").text(0);
 				}else{
-					$("#splitTip").text(0);
-					$("#splitPrice").text(onlyBillSplit);
-				}
 
+					$("#splitTip").text(0);
+					$("#splitPrice").text(onlyBillSplit.toFixed(2));
+				}
+				$('#totalSection').css("display","block");
 				$("#totalTip").text(0);
-				$("#totalPrice").text(Math.abs(parseFloat(billAmount)));
+				$("#totalPrice").text(Math.abs(parseFloat(billAmount)).toFixed(2));
 				// $("#splitTip").text(0);
 				// $("#splitPrice").text(onlyBillSplit);
 
@@ -110,52 +128,18 @@ function splitLogic(){
 					$("#splitTip").text(0);
 					$("#splitPrice").text(0);
 				}else{
-					$("#splitTip").text(calculatedSplitTip);
-					$("#splitPrice").text(calculatedSplitPrice);
+					$("#splitTip").text(calculatedSplitTip.toFixed(2));
+					$("#splitPrice").text(calculatedSplitPrice.toFixed(2));
 				}
 
-
-				$("#totalTip").text(Math.abs(calculatedTip));
-				$("#totalPrice").text(Math.abs(calculatedPrice));
+				$('#totalSection').css("display","block");
+				$("#totalTip").text(Math.abs(calculatedTip.toFixed(2)));
+				$("#totalPrice").text("$" + Math.abs(calculatedPrice.toFixed(2)));
 				
 			}
 		}
 
-		// else if((billAmount !== "") || (parseInt(billAmount) !== 0) || (billAmount !== NaN)){
-			
-		// 	if ((tipPercent === "") || (parseInt(tipPercent === 0)) || (tipPercent === NaN)) {
-
-		// 		console.log(billAmount);
-		// 		console.log(tipPercent);
-
-		// 		$("#totalPrice").text(billAmount);
-
-		// 	}else{
-		// 		var calculatedTip = parseInt(tipPercent) / 100 * parseInt(billAmount);
-		// 		var calculatedPrice = parseInt(calculatedTip) + parseInt(billAmount);
-
-		// 		console.log(billAmount);
-		// 		console.log(tipPercent);
-		// 		console.log(calculatedTip);
-		// 		console.log(calculatedPrice);
-
-		// 		$("#totalTip").text(calculatedTip);
-		// 		$("#totalPrice").text(calculatedPrice);
-		// 	}
-			
-		// }
-
-		// if ((tipPercent === "") || (parseInt(tipPercent === 0)) || (tipPercent === NaN)) {
-		// 	var calculatedTip = parseInt(tipPercent) / 100 * parseInt(billAmount);
-		// 	var calculatedPrice = parseInt(calculatedTip) + parseInt(billAmount);
-
-		// 	console.log(calculatedTip);
-		// 	console.log(calculatedPrice);
-
-		// 	$("#totalTip").text(calculatedTip);
-		// 	$("#totalPrice").text(calculatedPrice);
-		// }
-
+		
 	})
 
 

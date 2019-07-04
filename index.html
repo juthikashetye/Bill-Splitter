@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <meta charset="utf-8">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <head>
 	<meta charset="utf-8">
 	<!-- Required meta tag for responsiveness -->
@@ -26,8 +29,13 @@
 					</div>
 
 					<input type="number" name="billAmt" id="billAmount" data-placement="top" class="col form-control" min="0" step="0.01">
-					
+
 				</div>
+
+				<small id="billHelpText" class="form-text text-muted text-right mt-0">
+				    	Value must be greater than or equal to 0
+				</small>
+
 			</div>
 
 			<div class="form-group">
@@ -42,6 +50,11 @@
 					</div>
 					
 				</div>
+
+				<small id="tipHelpText" class="form-text text-muted text-right mt-0">
+				    	Value must be greater than or equal to 0
+				</small>
+
 			</div>
 		
   			<div class="form-group">
@@ -53,14 +66,17 @@
 				      </div>
 				   </div>
 
-				   	<div class="col input-group mb-3">
+				   	<div id="betweenDiv" class="col input-group mb-3" style="display: none;">
 						<label for="people" class="col-sm-4 col-md-2 col-form-label pl-0 mr-2">Between</label>
 						<input type="number" name="NumPeople" id="people" class="form-control" min="0" step="1">
 					</div>
 			   </div>
+			   <small id="betweenHelpText" class="form-text text-muted text-right mt-0" style="display: none;">
+				    	Value must be a positive whole number
+				</small>
 			</div>
 
-
+			
 			<!-- <input type="checkbox" name="splitCheckbox" id="splitBox">
 			<label for="splitBox" class="col-lg-3 control-label text-lg-right">Split Bill</label>
 
@@ -69,9 +85,6 @@
 				<input type="text" name="NumPeople" id="people" class="form-control col-xs-8">
 			</div> -->
 
-
-
-			<!-- </div> -->
 			<div class="text-center">
 				<button type="submit" id="calculate" class="text-center">Calculate</button>
 			</div>
@@ -79,13 +92,13 @@
 			
 		</form>
 
-		<section id="totalSection">
+		<section id="totalSection" style="display: none;">
 			<h2>Total Bill</h2>
 			<p>Tip Amount <span id="totalTip"></span></p>
 			<p>Total To Be Paid <span id="totalPrice"></span></p>
 		</section>
 
-		<section id="perPersonSection">
+		<section id="perPersonSection" style="display: none;">
 			<h2>Per Person</h2>
 			<p>Tip Amount <span id="splitTip"></span></p>
 			<p>Total To Be Paid <span id="splitPrice"></span></p>
