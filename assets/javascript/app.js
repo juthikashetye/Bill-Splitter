@@ -23,12 +23,13 @@ $(document).ready(function(){
 
   		$('#betweenDiv').css("display","none");
   		$('#betweenHelpText').css("display","none");
+  		$("#people").val("");
   	}
 
   })
 	
 	
- });
+});
 
 function splitLogic(){
 
@@ -37,31 +38,28 @@ function splitLogic(){
 		billAmount = $("#billAmount").val();
 		tipPercent = $("#tipPercent").val();
 		people = $("#people").val();
+
 		totalTip = $("#totalTip").text();
 		totalPrice = $("#totalPrice").text();
 		splitTip = $("#splitTip").text();
 		splitPrice = $("#splitPrice").text();
 		totalSection = $("#totalSection");
 		perPersonSection = $("#perPersonSection");
+
 		event.preventDefault();
-		// alert("You clicked calculate!");
-
-		// || (!billAmount.match(/^\d+$/))
-		// || (!billAmount.match(/^\d+\.?\d*$/))
-		// || (!tipPercent.match(/^\d+$/))
-		// || (!tipPercent.match(/^\d+\.?\d*$/)) 
-		// || (!Number.isFinite(parseFloat(billAmount))) 
-		// || (!Number.isFinite(parseFloat(tipPercent))) 
-		// (isFinite(parseFloat(tipPercent)))
-		// (isFinite(parseFloat(billAmount)))
-
 		
+
 		if ((billAmount === "") || ((isFinite(billAmount) === false) || (Math.sign(billAmount) === -1) || (Math.sign(billAmount) === -0) || (Math.sign(billAmount) === NaN))) {
 
-			$("#totalTip").text(0);
-			$("#totalPrice").text(0);
-			$("#splitTip").text(0);
-			$("#splitPrice").text(0);
+			alert("Bill Amount must be greater than 0");
+
+			$('#totalSection').css("display","none");
+			$('#perPersonSection').css("display","none");
+
+			$("#totalTip").text("$" + "0.00");
+			$("#totalPrice").text("$" + "0.00");
+			$("#splitTip").text("$" + "0.00");
+			$("#splitPrice").text("$" + "0.00");
 
 			console.log(billAmount);
 			console.log(tipPercent);
@@ -91,49 +89,63 @@ function splitLogic(){
 				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
 				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
-				if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
-					$("#splitTip").text(0);
-					$("#splitPrice").text(0);
-				}else{
+				if (($("#splitBox").is(':checked') === true)){
 
-					$("#splitTip").text(0);
-					$("#splitPrice").text(onlyBillSplit.toFixed(2));
+					if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
+						alert("Number of people to be split between must be a whole number greater than 0");
+						$('#perPersonSection').css("display","none");
+						$("#splitTip").text("$" + "0.00");
+						$("#splitPrice").text("$" + "0.00");
+					}else{
+						$('#perPersonSection').css("display","block");
+						$("#splitTip").text("$" + "0.00");
+						$("#splitPrice").text("$" + onlyBillSplit.toFixed(2));
+					}
 				}
-				$('#totalSection').css("display","block");
-				$("#totalTip").text(0);
-				$("#totalPrice").text(Math.abs(parseFloat(billAmount)).toFixed(2));
-				// $("#splitTip").text(0);
-				// $("#splitPrice").text(onlyBillSplit);
+				// alert("Tip value must be greater than 0");
 
+				$('#totalSection').css("display","block");
+
+				$("#totalTip").text("$" + "0.00");
+				$("#totalPrice").text("$" + Math.abs(parseFloat(billAmount)).toFixed(2));
+	
 			}else{
 				var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
 				var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
 				var calculatedSplitTip = calculatedTip/Math.abs(parseFloat(people));
 				var calculatedSplitPrice = calculatedPrice/Math.abs(parseFloat(people));
 
-				// console.log(billAmount);
-				// console.log(tipPercent);
-				// console.log(calculatedTip);
-				// console.log(calculatedPrice);
-				// console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
-				// console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
-				// console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
-				// console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
-				// console.log("Bill is finite " + (isFinite((billAmount))));
-				// console.log("Tip is finite " + (isFinite((tipPercent))));
-				// console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
-				// console.log("Tip is finite " + Number.isFinite((tipPercent)));
+				console.log(billAmount);
+				console.log(tipPercent);
+				console.log(calculatedTip);
+				console.log(calculatedPrice);
+				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
+				console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
+				console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
+				console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
+				console.log("Bill is finite " + (isFinite((billAmount))));
+				console.log("Tip is finite " + (isFinite((tipPercent))));
+				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
+				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
-				if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
-					$("#splitTip").text(0);
-					$("#splitPrice").text(0);
-				}else{
-					$("#splitTip").text(calculatedSplitTip.toFixed(2));
-					$("#splitPrice").text(calculatedSplitPrice.toFixed(2));
+				if (($("#splitBox").is(':checked') === true)){
+
+					if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
+						
+						alert("Number of people to be split between must be a whole number greater than 0");
+
+						$('#perPersonSection').css("display","none");
+						$("#splitTip").text("$" + "0.00");
+						$("#splitPrice").text("$" + "0.00");
+					}else{
+						$('#perPersonSection').css("display","block");
+						$("#splitTip").text("$" + calculatedSplitTip.toFixed(2));
+						$("#splitPrice").text("$" + calculatedSplitPrice.toFixed(2));
+					}
 				}
 
 				$('#totalSection').css("display","block");
-				$("#totalTip").text(Math.abs(calculatedTip.toFixed(2)));
+				$("#totalTip").text("$" + Math.abs(calculatedTip.toFixed(2)));
 				$("#totalPrice").text("$" + Math.abs(calculatedPrice.toFixed(2)));
 				
 			}
@@ -148,8 +160,7 @@ function splitLogic(){
 splitLogic();
 
 function init(){
-	totalSection.hide();
-	perPersonSection.hide();
+	
 }
 
 // init();
