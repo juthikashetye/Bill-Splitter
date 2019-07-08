@@ -23,6 +23,7 @@ $(document).ready(function(){
 
   		$('#betweenDiv').css("display","none");
   		$('#betweenHelpText').css("display","none");
+  		$('#perPersonSection').css("display","none");
   		$("#people").val("");
   	}
 
@@ -158,9 +159,3 @@ function splitLogic(){
 }
 
 splitLogic();
-
-function init(){
-	
-}
-
-// init();

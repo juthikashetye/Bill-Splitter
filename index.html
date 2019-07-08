@@ -7,22 +7,24 @@
 	<meta charset="utf-8">
 	<!-- Required meta tag for responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Tip Calculator</title>
+	<title>Tip N Split</title>
 	<!-- Compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900&display=swap" rel="stylesheet">
     <!-- style.css CSS file -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 <body>
-	<div class="container">
-		<h1 class="text-center">Tip Calculator</h1>
+	<div class="container rounded-lg">
+		<h1 class="text-center">Tip N Split</h1>
 
-		<form>
+		<form class="rounded-lg">
 
 			<div class="form-group">
 				<div class="input-group mb-3 row justify-content-md-center no-gutters">
 					
-					<label for="billAmount" class="col-sm-4 col-md-2 col-form-label">Bill Amount</label>
+					<label for="billAmount" class="col-sm-4 col-md-2 col-form-label font-weight-bold">Bill Amount</label>
 
 					<div class="input-group-prepend">
 						<span class="input-group-text">$</span>
@@ -32,7 +34,7 @@
 
 				</div>
 
-				<small id="billHelpText" class="form-text text-muted text-right mt-0">
+				<small id="billHelpText" class="form-text text-right mt-0">
 				    	Value must be greater than 0
 				</small>
 
@@ -41,7 +43,7 @@
 			<div class="form-group">
 				<div class="input-group mb-3 row justify-content-md-center no-gutters">
 					
-					<label for="tipPercent" class="col-sm-4 col-md-2 col-form-label">Tip</label>
+					<label for="tipPercent" class="col-sm-4 col-md-2 col-form-label font-weight-bold">Tip</label>
 
 					<input type="number" name="tipPercentage" id="tipPercent" data-placement="top" class="col form-control" min="0" step="0.01">
 
@@ -51,7 +53,7 @@
 					
 				</div>
 
-				<small id="tipHelpText" class="form-text text-muted text-right mt-0">
+				<small id="tipHelpText" class="form-text text-right mt-0">
 				    	Value must be greater than 0
 				</small>
 
@@ -62,46 +64,48 @@
 				    <div class="col-sm-3">
 				      <div class="form-check pt-2">
 				        <input class="form-check-input" type="checkbox" name="splitCheckbox" id="splitBox">
-						<label class="form-check-label ml-1" for="splitBox">Split Bill</label>
+						<label class="form-check-label ml-1 font-weight-bold" for="splitBox">Split Bill</label>
 				      </div>
 				   </div>
 
 				   	<div id="betweenDiv" class="col input-group mb-3" style="display: none;">
-						<label for="people" class="col-sm-4 col-md-2 col-form-label pl-0 mr-2">Between</label>
+						<label for="people" class="col-sm-4 col-md-2 col-form-label pl-0 mr-2 font-weight-bold">Between</label>
 						<input type="number" name="NumPeople" id="people" class="form-control" min="0" step="1">
 					</div>
 			   </div>
-			   <small id="betweenHelpText" class="form-text text-muted text-right mt-0" style="display: none;">
+			   <small id="betweenHelpText" class="form-text text-right mt-0" style="display: none;">
 				    	Value must be a whole number greater than 0
 				</small>
 			</div>
 
-			
-			<!-- <input type="checkbox" name="splitCheckbox" id="splitBox">
-			<label for="splitBox" class="col-lg-3 control-label text-lg-right">Split Bill</label>
-
-			<div class="input-group mb-3">
-				<label for="people" class="col-xs-4 control-label">Between</label>
-				<input type="text" name="NumPeople" id="people" class="form-control col-xs-8">
-			</div> -->
-
-			<div class="text-center">
-				<button type="submit" id="calculate" class="text-center">Calculate</button>
-			</div>
-			
+			<div class="text-center mt-4">
+				<button type="submit" id="calculate" class="text-center rounded-lg">Calculate</button>
+			</div>	
 			
 		</form>
 
-		<section id="totalSection" style="display: none;">
-			<h2>Total Bill</h2>
-			<p>Tip Amount <span id="totalTip"></span></p>
-			<p>Total To Be Paid <span id="totalPrice"></span></p>
+		<section id="totalSection" class="rounded-lg" style="display: none;">
+			<h2 class="sub-heading font-italic">Total Bill</h2>
+			<div class="row">
+				<p class="col font-weight-bold">Tip Amount</p>
+				<p id="totalTip" class="col"></p>
+			</div>
+			<div class="row">
+				<p class="col font-weight-bold">Total To Be Paid</p>
+				<p id="totalPrice" class="col"></p>
+			</div>
 		</section>
 
-		<section id="perPersonSection" style="display: none;">
-			<h2>Per Person</h2>
-			<p>Tip Amount <span id="splitTip"></span></p>
-			<p>Total To Be Paid <span id="splitPrice"></span></p>
+		<section id="perPersonSection" class="rounded-lg" style="display: none;">
+			<h2 class="sub-heading font-italic">Per Person</h2>
+			<div class="row">
+				<p class="col font-weight-bold">Tip Amount</p>
+				<p id="splitTip" class="col"></p>
+			</div>
+			<div class="row">
+				<p class="col font-weight-bold">Total To Be Paid</p>
+				<p id="splitPrice" class="col"></p>
+			</div>
 		</section>
 
 	</div>
