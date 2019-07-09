@@ -7,6 +7,7 @@ body {
   background-color: #faefeb;
   background-color: #e7e4e5;
   background-color: #f3f2f2;*/
+  background-color: #eae7dc;
   /*padding: 1.5%;*/
 }
 .mainDiv {
@@ -26,6 +27,7 @@ h1 {
   font-family: 'Orbitron', sans-serif;
   color: #992100;
   color: #983455;
+  color: #e8554a;
 }
 
 .navHeading {
@@ -34,12 +36,15 @@ h1 {
 
 .navBar {
   background-color: #0f3257;
+  background-color: #e8554a;
+  background-color: #eae7dc;
 }
 
 form {
   background-color: rgb(255,167,90); /*For browsers that do not support gradients*/
   /*background-image: linear-gradient(to right, #e66b00 , #ffbb80);*/
   background-color: #f0d0c2;
+  background-color: #e0cfb8;
   padding: 2%;
   border: solid #e6e6e6 1px;
 }
@@ -53,7 +58,7 @@ section {
   /*background-image: linear-gradient(to right, #e6a400 , #ffe299);*/
   background-color: #EEE2Dc;
   background-color: #dec6ba;
-  
+  background-color: #e8dbc9;
   padding: 2%;
   padding-bottom: 0.5%;
   border: solid #e6e6e6 1px;
@@ -62,6 +67,7 @@ section {
 .sub-heading {
   color: #334eff;
   color: #cb6788;
+  color: #ea6a61;
 }
 
 #totalSection {
@@ -82,10 +88,11 @@ section {
   cursor: pointer;
 }
 
-button {
+#calculate {
   background-color: rgb(90,112,255); /*For browsers that do not support gradients*/
   /*background-image: linear-gradient(to right, rgb(90,112,255), #8091ff); */
   background-color: #123c69;
+  background-color: #e8554a;
   color: #ffffff;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -94,9 +101,10 @@ button {
   border: solid #666666 1px;
 }
 
-button:hover {
+#calculate:hover {
   background-color: #334eff; /*For browsers that do not support gradients*/
   /*background-image: linear-gradient(to right, #334eff, #667aff);*/
   background-color: #1a5799;
+  background-color: #ea6a61;
 }
 
