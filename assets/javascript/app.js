@@ -29,7 +29,6 @@ $(document).ready(function(){
 
   })
 	
-	
 });
 
 function splitLogic(){
@@ -101,6 +100,7 @@ function splitLogic(){
 						$('#perPersonSection').css("display","block");
 						$("#splitTip").text("$" + "0.00");
 						$("#splitPrice").text("$" + onlyBillSplit.toFixed(2));
+						scrollToResult();
 					}
 				}
 				// alert("Tip value must be greater than 0");
@@ -109,6 +109,7 @@ function splitLogic(){
 
 				$("#totalTip").text("$" + "0.00");
 				$("#totalPrice").text("$" + Math.abs(parseFloat(billAmount)).toFixed(2));
+				scrollToResult();
 	
 			}else{
 				var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
@@ -142,12 +143,14 @@ function splitLogic(){
 						$('#perPersonSection').css("display","block");
 						$("#splitTip").text("$" + calculatedSplitTip.toFixed(2));
 						$("#splitPrice").text("$" + calculatedSplitPrice.toFixed(2));
+						scrollToResult();
 					}
 				}
-
+				
 				$('#totalSection').css("display","block");
 				$("#totalTip").text("$" + Math.abs(calculatedTip.toFixed(2)));
 				$("#totalPrice").text("$" + Math.abs(calculatedPrice.toFixed(2)));
+				scrollToResult();
 				
 			}
 		}
@@ -156,6 +159,20 @@ function splitLogic(){
 	})
 
 
+}
+
+function scrollToResult() {
+  // window.scrollTo(0, 500);
+
+//   window.scroll({
+//   top: 650, 
+//   left: 0, 
+//   behavior: 'smooth'
+// });
+
+	document.querySelector('#totalSection').scrollIntoView({ 
+	  behavior: 'smooth' 
+	});
 }
 
 splitLogic();
