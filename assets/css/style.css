@@ -21,7 +21,9 @@ body {
   background-color: #f3f2f2;
   padding: 2%;
   padding-top: 0.5%;
+  /*min-height: calc(100vh - 70px);*/
 }
+
 h1 {
   
   font-family: 'Orbitron', sans-serif;
@@ -84,7 +86,7 @@ section {
   font-size: 105%;
 }
 
-#splitBox {
+#splitBox, .splitBoxLabel {
   cursor: pointer;
 }
 
@@ -98,7 +100,7 @@ section {
   padding-bottom: 6px;
   padding-left: 10px;
   padding-right: 10px;
-  border: solid #666666 1px;
+  border: solid rgba(0,0,0,.1) 1px;
 }
 
 #calculate:hover {
@@ -106,5 +108,9 @@ section {
   /*background-image: linear-gradient(to right, #334eff, #667aff);*/
   background-color: #1a5799;
   background-color: #ea6a61;
+}
+
+.navBar a:hover {
+  text-decoration: underline;
 }
 
