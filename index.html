@@ -18,7 +18,7 @@
 <body class="d-flex flex-column h-100">
 	<nav class="navbar navbar-expand-lg navbar-light navBar">
 		<div class="container navContainer">
-		  <a class="navbar-brand navHeading" href="#" title="About Tip N Split">Tip N Split</a>
+		  <a class="navbar-brand navHeading" href="#" title="About Tip N Split" data-toggle="modal" data-target="#modalScrollable">Tip N Split</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -26,7 +26,7 @@
 		  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 		      <li class="nav-item">
-		        <a class="nav-link" href="index.html" title="Tip Calculator">Home</a>
+		        <a class="nav-link" href="index.html" title="Tip Calculator">Calculator</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="guide.html" title="General guidelines for tipping">Tipping Guide</a>
@@ -35,6 +35,29 @@
 		  </div>
 		</div>
 	</nav>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalScrollable" tabindex="-1" role="dialog" aria-labelledby="modalScrollableTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-scrollable" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title modalHeading" id="modalScrollableTitle">Tip N Split</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body modalBody">
+	        <p>Tip N Split is a useful app for anyone who goes out to a restaurant, bar, or any place where you are supposed to tip.</p>
+	        <p>Quickly calculate the tip amount for your bill. Includes a feature to split the cost between any number of people so you know exactly how much you and your friends should tip, every time.</p>
+	        <p>And if you ever have a problem figuring out how much to tip, then this app also gives you some helpful 'tips' on tips.</p>
+	        <small style="font-size: 14px; color: #444444;">Developed by <a href="https://juthikashetye.github.io/Updated-Portfolio-Page/" target="_blank" title="Visit Juthika's Portfolio" style="color: inherit;">Juthika Shetye</a></small><br>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<div class="container mainDiv rounded-lg flex-shrink-0">
 		<h1 class="text-center">Tip N Split</h1>
@@ -50,7 +73,7 @@
 						<span class="input-group-text">$</span>
 					</div>
 
-					<input type="number" name="billAmt" id="billAmount" data-placement="top" class="col form-control" min="0" step="0.01">
+					<input type="number" name="billAmt" id="billAmount" class="col form-control" min="0" step="0.01">
 
 				</div>
 
@@ -65,7 +88,7 @@
 					
 					<label for="tipPercent" class="col-sm-4 col-md-2 col-form-label font-weight-bold">Tip</label>
 
-					<input type="number" name="tipPercentage" id="tipPercent" data-placement="top" class="col form-control" min="0" step="0.01">
+					<input type="number" name="tipPercentage" id="tipPercent" class="col form-control" min="0" step="0.01">
 
 					<div class="input-group-append">
 						<span class="input-group-text">%</span>
@@ -90,7 +113,7 @@
 
 				   	<div id="betweenDiv" class="col input-group mb-3" style="display: none;">
 						<label for="people" class="col-sm-4 col-md-2 col-form-label pl-0 mr-2 font-weight-bold">Between</label>
-						<input type="number" name="NumPeople" id="people" class="form-control" min="0" step="1">
+						<input type="number" name="NumPeople" id="people" class="form-control" min="1" step="1">
 					</div>
 			   </div>
 			   <small id="betweenHelpText" class="form-text text-right mt-0" style="display: none;">
@@ -132,7 +155,7 @@
 
 	<footer class="footer mt-auto py-3 text-center">
   		<div class="container">
-    		<small class="text-muted text-center">Copyright &copy; 2019 Juthika Shetye. All rights reserved.</small>
+    		<small class="text-muted text-center">Copyright &copy; 2019 <a href="https://juthikashetye.github.io/Updated-Portfolio-Page/" target="_blank" title="Visit Juthika's Portfolio" style="color: inherit;">Juthika Shetye</a>. All rights reserved.</small>
   		</div>
 	</footer>
 
@@ -153,8 +176,8 @@
 
     <!-- onload JS code goes here -->
     <script type="text/javascript">
-    	$(function () {
-		  $('[data-toggle="tooltip"]').tooltip()
+    	$('#myModal').on('shown.bs.modal', function () {
+  			$('#myInput').trigger('focus')
 		})	
     </script>
 </body>

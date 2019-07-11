@@ -66,6 +66,7 @@ function splitLogic(){
 		totalPrice = $("#totalPrice").text();
 		splitTip = $("#splitTip").text();
 		splitPrice = $("#splitPrice").text();
+
 		totalSection = $("#totalSection");
 		perPersonSection = $("#perPersonSection");
 
@@ -84,33 +85,11 @@ function splitLogic(){
 			$("#splitTip").text("$" + "0.00");
 			$("#splitPrice").text("$" + "0.00");
 
-			console.log(billAmount);
-			console.log(tipPercent);
-			console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
-			console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
-			console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
-			console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
-			console.log("Bill is finite " + (isFinite((billAmount))));
-			console.log("Tip is finite " + (isFinite((tipPercent))));
-			console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
-			console.log("Tip is finite " + Number.isFinite((tipPercent)));
-
 		}else{
 
 			if ((tipPercent === "") || (isFinite(tipPercent) === false) || (Math.sign(tipPercent) === -1) || (Math.sign(tipPercent) === -0) || (Math.sign(tipPercent) === NaN)) {
 
 				var onlyBillSplit = Math.abs(parseFloat(billAmount))/Math.abs(parseFloat(people));
-
-				console.log(billAmount);
-				console.log(tipPercent);
-				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
-				console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
-				console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
-				console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
-				console.log("Bill is finite " + (isFinite((billAmount))));
-				console.log("Tip is finite " + (isFinite((tipPercent))));
-				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
-				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
 				if (($("#splitBox").is(':checked') === true)){
 
@@ -126,7 +105,6 @@ function splitLogic(){
 						scrollToResult();
 					}
 				}
-				// alert("Tip value must be greater than 0");
 
 				$('#totalSection').css("display","block");
 
@@ -139,19 +117,6 @@ function splitLogic(){
 				var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
 				var calculatedSplitTip = calculatedTip/Math.abs(parseFloat(people));
 				var calculatedSplitPrice = calculatedPrice/Math.abs(parseFloat(people));
-
-				console.log(billAmount);
-				console.log(tipPercent);
-				console.log(calculatedTip);
-				console.log(calculatedPrice);
-				console.log("Converted Bill Amount is finite " + (isFinite(parseFloat(billAmount))));
-				console.log("Converted Tip is finite " + (isFinite(parseFloat(tipPercent))));
-				console.log("Converted Bill Amount is finite " + Number.isFinite(parseFloat(billAmount)));
-				console.log("Converted Tip is finite " + Number.isFinite(parseFloat(tipPercent)));
-				console.log("Bill is finite " + (isFinite((billAmount))));
-				console.log("Tip is finite " + (isFinite((tipPercent))));
-				console.log("Bill Amount is finite " + Number.isFinite((billAmount)));
-				console.log("Tip is finite " + Number.isFinite((tipPercent)));
 
 				if (($("#splitBox").is(':checked') === true)){
 
