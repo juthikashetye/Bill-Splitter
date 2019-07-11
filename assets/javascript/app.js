@@ -75,76 +75,98 @@ function splitLogic(){
 
 		if ((billAmount === "") || ((isFinite(billAmount) === false) || (Math.sign(billAmount) === -1) || (Math.sign(billAmount) === -0) || (Math.sign(billAmount) === NaN))) {
 
-			alert("Bill Amount must be greater than 0");
-
-			$('#totalSection').css("display","none");
-			$('#perPersonSection').css("display","none");
-
-			$("#totalTip").text("$" + "0.00");
-			$("#totalPrice").text("$" + "0.00");
-			$("#splitTip").text("$" + "0.00");
-			$("#splitPrice").text("$" + "0.00");
+			displayNone();
 
 		}else{
 
-			if ((tipPercent === "") || (isFinite(tipPercent) === false) || (Math.sign(tipPercent) === -1) || (Math.sign(tipPercent) === -0) || (Math.sign(tipPercent) === NaN)) {
+			calculateTip();
 
-				var onlyBillSplit = Math.abs(parseFloat(billAmount))/Math.abs(parseFloat(people));
-
-				if (($("#splitBox").is(':checked') === true)){
-
-					if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
-						alert("Number of people to be split between must be a whole number greater than 0");
-						$('#perPersonSection').css("display","none");
-						$("#splitTip").text("$" + "0.00");
-						$("#splitPrice").text("$" + "0.00");
-					}else{
-						$('#perPersonSection').css("display","block");
-						$("#splitTip").text("$" + "0.00");
-						$("#splitPrice").text("$" + onlyBillSplit.toFixed(2));
-						scrollToResult();
-					}
-				}
-
-				$('#totalSection').css("display","block");
-
-				$("#totalTip").text("$" + "0.00");
-				$("#totalPrice").text("$" + Math.abs(parseFloat(billAmount)).toFixed(2));
-				scrollToResult();
-	
-			}else{
-				var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
-				var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
-				var calculatedSplitTip = calculatedTip/Math.abs(parseFloat(people));
-				var calculatedSplitPrice = calculatedPrice/Math.abs(parseFloat(people));
-
-				if (($("#splitBox").is(':checked') === true)){
-
-					if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
-						
-						alert("Number of people to be split between must be a whole number greater than 0");
-
-						$('#perPersonSection').css("display","none");
-						$("#splitTip").text("$" + "0.00");
-						$("#splitPrice").text("$" + "0.00");
-					}else{
-						$('#perPersonSection').css("display","block");
-						$("#splitTip").text("$" + calculatedSplitTip.toFixed(2));
-						$("#splitPrice").text("$" + calculatedSplitPrice.toFixed(2));
-						scrollToResult();
-					}
-				}
-				
-				$('#totalSection').css("display","block");
-				$("#totalTip").text("$" + Math.abs(calculatedTip.toFixed(2)));
-				$("#totalPrice").text("$" + Math.abs(calculatedPrice.toFixed(2)));
-				scrollToResult();
-				
-			}
 		}
 
 	})
 
+}
+
+function displayNone(){
+
+	alert("Bill Amount must be greater than 0");
+
+	$('#totalSection').css("display","none");
+	$('#perPersonSection').css("display","none");
+
+	$("#totalTip").text("$" + "0.00");
+	$("#totalPrice").text("$" + "0.00");
+	$("#splitTip").text("$" + "0.00");
+	$("#splitPrice").text("$" + "0.00");
+}
+
+function calculateTip(){
+
+	if ((tipPercent === "") || (isFinite(tipPercent) === false) || (Math.sign(tipPercent) === -1) || (Math.sign(tipPercent) === -0) || (Math.sign(tipPercent) === NaN)) {
+
+		processOnlyBill();
+
+	}else{
+
+		calculateFullBill();
+
+	}
+}
+
+function processOnlyBill(){
+
+	var onlyBillSplit = Math.abs(parseFloat(billAmount))/Math.abs(parseFloat(people));
+
+	if (($("#splitBox").is(':checked') === true)){
+
+		if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
+			alert("Number of people to be split between must be a whole number greater than 0");
+			$('#perPersonSection').css("display","none");
+			$("#splitTip").text("$" + "0.00");
+			$("#splitPrice").text("$" + "0.00");
+		}else{
+			$('#perPersonSection').css("display","block");
+			$("#splitTip").text("$" + "0.00");
+			$("#splitPrice").text("$" + onlyBillSplit.toFixed(2));
+			scrollToResult();
+		}
+	}
+
+	$('#totalSection').css("display","block");
+
+	$("#totalTip").text("$" + "0.00");
+	$("#totalPrice").text("$" + Math.abs(parseFloat(billAmount)).toFixed(2));
+	scrollToResult();
+}
+
+function calculateFullBill(){
+
+	var calculatedTip = Math.abs(parseFloat(tipPercent)) / 100 * Math.abs(parseFloat(billAmount));
+	var calculatedPrice = Math.abs(parseFloat(calculatedTip)) + Math.abs(parseFloat(billAmount));
+	var calculatedSplitTip = calculatedTip/Math.abs(parseFloat(people));
+	var calculatedSplitPrice = calculatedPrice/Math.abs(parseFloat(people));
+
+	if (($("#splitBox").is(':checked') === true)){
+
+		if ((people === "") || (isFinite(people) === false) || (Math.sign(people) === -1) || (Math.sign(people) === -0) || (Math.sign(people) === NaN) || (Number.isInteger(parseFloat(people)) === false)) {
+			
+			alert("Number of people to be split between must be a whole number greater than 0");
+
+			$('#perPersonSection').css("display","none");
+			$("#splitTip").text("$" + "0.00");
+			$("#splitPrice").text("$" + "0.00");
+		}else{
+			$('#perPersonSection').css("display","block");
+			$("#splitTip").text("$" + calculatedSplitTip.toFixed(2));
+			$("#splitPrice").text("$" + calculatedSplitPrice.toFixed(2));
+			scrollToResult();
+		}
+	}
+	
+	$('#totalSection').css("display","block");
+	$("#totalTip").text("$" + Math.abs(calculatedTip.toFixed(2)));
+	$("#totalPrice").text("$" + Math.abs(calculatedPrice.toFixed(2)));
+	scrollToResult();
 }
 
 function scrollToResult() {
