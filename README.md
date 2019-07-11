@@ -2,6 +2,8 @@
 
 ![Tip N Split](./assets/images/tipNsplit.png)
 
+Link to the deployed app: [Tip N Split](https://juthikashetye.github.io/Tip-N-Split/)
+
 ## About the app
 
 * Tip N Split is a useful app for anyone who goes out to a restaurant, bar, or any place where you are supposed to tip.
